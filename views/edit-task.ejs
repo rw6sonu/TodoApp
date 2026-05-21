@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit-Page</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <div class="container mt-5">
+
+        <div class="row justify-content-center">
+
+            <div class="col-md-6">
+
+                <div class="card shadow p-4">
+
+                    <h2 class="text-center mb-4">
+                        Edit Task
+                    </h2>
+
+                    <form action="/update/<%= task.id %>" method="POST">
+
+                        <div class="mb-3">
+
+                            <label class="form-label">
+                                Task Title
+                            </label>
+
+                            <input type="text" name="title" class="form-control" value="<%= task.title %>" required>
+
+                        </div>
+
+                        <div class="mb-3">
+
+                            <label class="form-label">
+                                Task Description
+                            </label>
+
+                            <textarea name="description" class="form-control" rows="4"
+                                required><%= task.description %></textarea>
+
+                        </div>
+
+                        <div class="mb-4">
+
+                            <label class="form-label">
+                                Task Priority
+                            </label>
+
+                            <select name="priority" class="form-select">
+
+                                <option value="High" <%=task.priority==="High" ? "selected" : "" %>>
+                                    High
+                                </option>
+
+                                <option value="Medium" <%=task.priority==="Medium" ? "selected" : "" %>>
+                                    Medium
+                                </option>
+
+                                <option value="Low" <%=task.priority==="Low" ? "selected" : "" %>>
+                                    Low
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                        <div class="mb-4">
+
+                            <label class="form-label">
+                                Task Status
+                            </label>
+
+                            <select name="status" class="form-select">
+
+                                <option value="Pending" <%=task.status==='Pending' ? 'selected' : '' %>>
+                                    Pending
+                                </option>
+
+                                <option value="In Progress" <%=task.status==='In Progress' ? 'selected' : '' %>>
+                                    In Progress
+                                </option>
+
+                                <option value="Completed" <%=task.status==='Completed' ? 'selected' : '' %>>
+                                    Completed
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <button type="submit" class="btn btn-success w-100">
+
+                            Update Task
+
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,204 @@
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <title>Dashboard</title>
+        <link rel="stylesheet" href="/css/style.css">
+    </head>
+
+    <body>
+        <div class="container mt-5">
+
+            <div class="row mb-4">
+
+                <div>
+
+                    <div class="dashcard bg-primary text-white shadow">
+
+                        <div class="dashcard-body text-center">
+
+                            <h4>Total Tasks</h4>
+
+                            <h2>
+                                <%= totalTasks %>
+                            </h2>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-4">
+
+                    <div class="dashcard bg-warning text-dark shadow">
+
+                        <div class="dashcard-body text-center">
+
+                            <h4>Pending Tasks</h4>
+
+                            <h2>
+                                <%= pendingTasks %>
+                            </h2>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-4">
+
+                    <div class="dashcard bg-success text-white shadow">
+
+                        <div class="dashcard-body text-center">
+
+                            <h4>Completed Tasks</h4>
+
+                            <h2>
+                                <%= completedTasks %>
+                            </h2>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+            <div class="taskcard shadow">
+                <a href="/add" class="add-btn">
+                    <button>Add Student</button>
+                </a>
+
+                <div class="taskcard-body">
+
+                    <h3 class="task-list">
+                        Task List
+                    </h3>
+
+                    <table class="table" border="1">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>ID</th>
+                                <th>Title</th>
+                                <th>Description</th>
+                                <th>Priority</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            <% tasks.forEach(task=> { %>
+
+                                <tr>
+
+                                    <td>
+                                        <%= task.id %>
+                                    </td>
+
+                                    <td>
+                                        <%= task.title %>
+                                    </td>
+
+                                    <td>
+                                        <%= task.description %>
+                                    </td>
+
+                                    <td>
+
+                                        <% if(task.priority==="High" ) { %>
+
+                                            <span class="badge bg-danger">
+                                                High
+                                            </span>
+
+                                            <% } else if(task.priority==="Medium" ) { %>
+
+                                                <span class="badge bg-warning text-dark">
+                                                    Medium
+                                                </span>
+
+                                                <% } else { %>
+
+                                                    <span class="badge bg-success">
+                                                        Low
+                                                    </span>
+
+                                                    <% } %>
+
+                                    </td>
+
+
+                                    <td>
+
+                                        <% if(task.status==="Pending" ) { %>
+
+                                            <span class="badge bg-secondary">
+                                                Pending
+                                            </span>
+
+                                            <% } else if(task.status==="In Progress" ) { %>
+
+                                                <span class="badge bg-warning text-dark">
+                                                    In Progress
+                                                </span>
+
+                                                <% } else { %>
+
+                                                    <span class="badge bg-success">
+                                                        Completed
+                                                    </span>
+
+
+                                                        <% } %>
+
+                                    </td>
+
+
+
+
+                                    <td>
+                                        <!-- Edit -->
+
+                                        <a href="/edit/<%= task.id %>" class="btn btn-sm btn-warning">
+
+                                            Edit
+
+                                        </a>
+
+                                        <!-- Delete -->
+
+                                        <a href="/delete/<%= task.id %>" class="btn btn-sm btn-danger">
+
+                                            Delete
+
+                                        </a>
+
+                                    </td>
+
+                                </tr>
+
+                                <% }) %>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </div>
+    </body>
+
+    </html>
